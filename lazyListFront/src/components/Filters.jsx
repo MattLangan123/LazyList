@@ -59,7 +59,7 @@ const Filter = (props) => {
                 canMinMaxValueSame = {true}
             />
             <div className="filterBtns">
-                <button className="createPlaylistBtn" onClick={props.filterPlaylist}>Create Filter</button>
+                <button className="createPlaylistBtn" onClick={props.filterPlaylist}>Filter Songs</button>
                 <button className="createPlaylistBtn" onClick={props.createPlaylist}>Create Playlist</button>
             </div>
             

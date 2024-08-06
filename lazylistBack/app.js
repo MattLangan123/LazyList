@@ -5,9 +5,10 @@ import cors from 'cors'
 import queryString from 'query-string'
 import cookieParser from 'cookie-parser'
 import axios from 'axios'
+import 'dotenv/config'
 
-const client_id = 'caa4611ae28c4f7680d980488b12c723'
-const client_secret = '920eb9abb638477ab5068257ac8db1a4'
+const client_id = process.env.client_id
+const client_secret = process.env.client_secret
 const redirect_uri = 'http://localhost:5173/'
 
 const app = express();
