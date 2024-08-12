@@ -9,11 +9,12 @@ import 'dotenv/config'
 
 const client_id = process.env.client_id
 const client_secret = process.env.client_secret
-const redirect_uri = 'http://localhost:5173/'
+const redirect_uri = 'http://localhost:3000/'
 
 const app = express();
 app.use(cors())
 app.use(logger('dev'))
+app.use(express.static('dist'))
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
@@ -167,9 +168,6 @@ app.post('/filter-playlist', async (req, res) => {
     let songAnalytics = []
     let filteredSongs = []
 
-    console.log(req.body.id.length)
-    console.log(req.body)
-
     // Returns each tracks audio features for playlist recieved from frontend in chunks of 100 (Spotify API limit)
     for (let i = 0; i < req.body.id.length; i+=100) {
         let upperBound = i + 100
@@ -202,7 +200,6 @@ app.post('/filter-playlist', async (req, res) => {
 })
 
 app.post('/add-songs', async (req, res) => {
-    console.log(req.body)
     for ( let i = 0; i < req.body.uris.length; i+=100) {
         let upperBound = i + 100
         let search = []
@@ -223,4 +220,5 @@ app.post('/add-songs', async (req, res) => {
 
 })
 
-app.listen(3000, () => console.log("app listening on port 3000!"))
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`app listening on port ${PORT}!`))
