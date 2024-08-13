@@ -7,6 +7,8 @@ import Songs from "./Songs";
 // eslint-disable-next-line react/prop-types
 const Dashboard = ({code}) => {
 
+    const api = 'https://lazylist.onrender.com/';
+
     //user access token for spotify api calls
     const [accessToken, setAccessToken] = useState();
 
@@ -70,7 +72,7 @@ const Dashboard = ({code}) => {
     // Fetch the access token / refresh token and sets the access token, liked songs, top songs in the state
     useEffect(() => {
         axios
-            .post('http://localhost:3000/login', {code})
+            .post(`${api}login`, {code})
             .then((response) => {
                 // Clear the code from the URL after fetching the access token
                 window.history.pushState({}, null, "/");
@@ -79,24 +81,24 @@ const Dashboard = ({code}) => {
                 if (response.data.accessToken !== undefined) {
                     const access = response.data.accessToken.access_token;
                     axios
-                        .post('http://localhost:3000/top-songs-1month', {access})
+                        .post(`${api}top-songs-1month`, {access})
                         .then((response) => {
                             setTopSongsOneM(response.data.songs);
                         })
                         .catch(error => console.error("Error fetching top songs from last month", error));
                     axios
-                        .post('http://localhost:3000/top-songs-6months', {access})
+                        .post(`${api}top-songs-6months`, {access})
                         .then((response) => {
                             setTopSongsSixM(response.data.songs);
                         })
                         .catch(error => console.error("Error fetching top songs from last 6 months", error));
                     axios
-                        .post('http://localhost:3000/top-songs-year', {access})
+                        .post(`${api}top-songs-year`, {access})
                         .then((response) => {
                             setTopSongsYear(response.data.songs);
                         })
                         .catch(error => console.error("Error fetching top songs from last year", error));
-                    axios.post('http://localhost:3000/liked-songs', {access})
+                    axios.post(`${api}liked-songs`, {access})
                         .then((response) => {
                             let likedSongs = response.data.songs;
                             let filteredLikedSongs = [];
@@ -106,7 +108,7 @@ const Dashboard = ({code}) => {
                             setLikedSongs(filteredLikedSongs);
                         })
                         .catch(error => console.error("Error fetching liked songs", error));
-                    axios.post('http://localhost:3000/user-id', {access})
+                    axios.post(`${api}/user-id`, {access})
                         .then((response) => {
                             setUserId(response.data.id);
                         })
@@ -132,7 +134,7 @@ const Dashboard = ({code}) => {
         }
 
         // Create a playlist with the inputted name. Will return the playlist ID
-        axios.post('http://localhost:3000/create-playlist', {
+        axios.post(`${api}create-playlist`, {
             access: accessToken.access_token,
             playlistName: playlistName,
             userId: userId
@@ -145,7 +147,7 @@ const Dashboard = ({code}) => {
                 })
 
                 // Add the songs to the playlist
-                axios.post('http://localhost:3000/add-songs', {
+                axios.post(`${api}add-songs`, {
                     access: accessToken.access_token,
                     playlistId: playlistId,
                     uris: uris
@@ -248,7 +250,7 @@ const Dashboard = ({code}) => {
         }
 
         // Filter the playlist based on the user inputted values and display filtered playlist
-        axios.post('http://localhost:3000/filter-playlist', {
+        axios.post(`${api}filter-playlist`, {
             access: accessToken.access_token,
             id: id,
             valence: valence,
