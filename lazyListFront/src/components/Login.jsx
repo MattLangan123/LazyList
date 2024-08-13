@@ -2,7 +2,7 @@ import appDashboard from '../../public/dashboard.png'
 
 
 const authEndPoint = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:3000/"
+const redirectUri = "https://lazylist.onrender.com/"
 const clientId = "caa4611ae28c4f7680d980488b12c723"
 
 const scopes = [
