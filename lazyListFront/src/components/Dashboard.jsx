@@ -108,7 +108,7 @@ const Dashboard = ({code}) => {
                             setLikedSongs(filteredLikedSongs);
                         })
                         .catch(error => console.error("Error fetching liked songs", error));
-                    axios.post(`${api}/user-id`, {access})
+                    axios.post(`${api}user-id`, {access})
                         .then((response) => {
                             setUserId(response.data.id);
                         })
