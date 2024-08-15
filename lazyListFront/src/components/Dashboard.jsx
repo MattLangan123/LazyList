@@ -7,7 +7,7 @@ import Songs from "./Songs";
 // eslint-disable-next-line react/prop-types
 const Dashboard = ({code}) => {
 
-    const api = 'https://lazylist.onrender.com/';
+    const api = 'https://lazylist.onrender.com/'
 
     //user access token for spotify api calls
     const [accessToken, setAccessToken] = useState();
