@@ -1,7 +1,9 @@
 # LazyList
 
 LazyList is a full stack web application utilizing the Spotify API to allow users to create playlists from their top Spotify songs with ease. 
-(LAZYLIST IS CURRENTLY PENDING SPOTIFY APPROVAL TO BE DEPLOYED TO THE PUBLIC)
+(LAZYLIST IS CURRENTLY PENDING SPOTIFY APPROVAL TO BE DEPLOYED TO THE PUBLIC ONLY WHITELISTED USERS ARE ABLE TO LOG INTO THEIR SPOTIFY ACCOUNTS)
+
+https://lazylist.onrender.com/
 
 **Technologies Used:**
 
