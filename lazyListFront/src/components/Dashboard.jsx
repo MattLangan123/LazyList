@@ -320,6 +320,8 @@ const Dashboard = ({code}) => {
                 }
                 setLazyPlaylist(lazyPlay);
                 setPlaylistSelected(5);
+                alert("Playlist filtered successfully!")
+                
                 
             })
             .catch(error => console.error("Error filtering playlist", error)
