@@ -314,6 +314,7 @@
 
     .songBox {
         grid-template-columns: .01fr .1fr 1fr 1fr .1fr;
+        width: 65vw
     }
 
     .songName {
@@ -351,6 +352,10 @@
             flex-direction: column;
             gap: 30px;
             margin-left: 2.5rem;
+        }
+
+        .songBox {
+            width: 55vw;
         }
 
         .mobileBtns {
